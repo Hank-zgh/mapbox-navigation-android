@@ -531,8 +531,6 @@ public class NavigationViewModel extends AndroidViewModel {
     }
   };*/
 
-  //private Router.Callback routeEngineCallback = new NavigationViewRouteEngineListener(this);
-
   @SuppressLint("MissingPermission")
   private void startNavigation(DirectionsRoute route) {
     if (route != null) {

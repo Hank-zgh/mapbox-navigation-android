@@ -20,7 +20,7 @@ class NavigationViewSubscriber implements LifecycleObserver {
   private final NavigationPresenter navigationPresenter;
 
   NavigationViewSubscriber(final LifecycleOwner owner, final NavigationViewModel navigationViewModel,
-                           final NavigationPresenter navigationPresenter) {
+      final NavigationPresenter navigationPresenter) {
     lifecycleOwner = owner;
     lifecycleOwner.getLifecycle().addObserver(this);
     this.navigationViewModel = navigationViewModel;
@@ -58,9 +58,9 @@ class NavigationViewSubscriber implements LifecycleObserver {
     navigationViewModel.retrieveRouteProgressUpdates().observe(lifecycleOwner, new Observer<RouteProgress>() {
       @Override
       public void onChanged(RouteProgress routeProgress) {
-          if(routeProgress != null) {
-            navigationPresenter.onRouteProgress(routeProgress);
-          }
+        if (routeProgress != null) {
+          navigationPresenter.onRouteProgress(routeProgress);
+        }
       }
     });
 

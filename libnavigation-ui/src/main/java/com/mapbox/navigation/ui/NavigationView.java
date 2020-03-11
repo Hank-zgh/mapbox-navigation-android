@@ -74,7 +74,7 @@ import com.mapbox.navigation.utils.extensions.ContextEx;
  * @since 0.7.0
  */
 public class NavigationView extends CoordinatorLayout implements LifecycleOwner, OnMapReadyCallback,
-  NavigationContract.View {
+    NavigationContract.View {
 
   private static final String MAP_INSTANCE_STATE_KEY = "navgation_mapbox_map_instance_state";
   private static final int INVALID_STATE = 0;
@@ -154,8 +154,8 @@ public class NavigationView extends CoordinatorLayout implements LifecycleOwner,
     int bottomSheetBehaviorState = summaryBehavior == null ? INVALID_STATE : summaryBehavior.getState();
     boolean isWayNameVisible = wayNameView.getVisibility() == VISIBLE;
     NavigationViewInstanceState navigationViewInstanceState = new NavigationViewInstanceState(
-      bottomSheetBehaviorState, recenterBtn.getVisibility(), instructionView.isShowingInstructionList(),
-      isWayNameVisible, wayNameView.retrieveWayNameText(), navigationViewModel.isMuted());
+        bottomSheetBehaviorState, recenterBtn.getVisibility(), instructionView.isShowingInstructionList(),
+        isWayNameVisible, wayNameView.retrieveWayNameText(), navigationViewModel.isMuted());
     String instanceKey = getContext().getString(R.string.navigation_view_instance_state);
     outState.putParcelable(instanceKey, navigationViewInstanceState);
     outState.putBoolean(getContext().getString(R.string.navigation_running), navigationViewModel.isRunning());
@@ -396,17 +396,17 @@ public class NavigationView extends CoordinatorLayout implements LifecycleOwner,
 
   @Override
   public void updatePuckState(RouteProgress routeProgress) {
-    if(routeProgress == null || routeProgress.currentState() == null) {
+    if (routeProgress == null || routeProgress.currentState() == null) {
       return;
     }
 
     int puckDrawable;
     switch (routeProgress.currentState()) {
       case ROUTE_INVALID:
-          puckDrawable = R.drawable.user_puck_icon_uncertain_location;
+        puckDrawable = R.drawable.user_puck_icon_uncertain_location;
         break;
       case ROUTE_INITIALIZED:
-          puckDrawable = R.drawable.user_puck_icon;
+        puckDrawable = R.drawable.user_puck_icon;
         break;
       case LOCATION_TRACKING:
         puckDrawable = R.drawable.user_puck_icon;
@@ -473,10 +473,10 @@ public class NavigationView extends CoordinatorLayout implements LifecycleOwner,
    * ready.  Note, this position is ignored during rotation in favor of the last known map position.
    *
    * @param onNavigationReadyCallback to be set to this view
-   * @param initialMapCameraPosition  to be shown once the map is ready
+   * @param initialMapCameraPosition to be shown once the map is ready
    */
   public void initialize(OnNavigationReadyCallback onNavigationReadyCallback,
-                         @NonNull CameraPosition initialMapCameraPosition) {
+      @NonNull CameraPosition initialMapCameraPosition) {
     this.onNavigationReadyCallback = onNavigationReadyCallback;
     this.initialMapCameraPosition = initialMapCameraPosition;
     if (!isMapInitialized) {
@@ -581,7 +581,7 @@ public class NavigationView extends CoordinatorLayout implements LifecycleOwner,
     summaryBehavior = BottomSheetBehavior.from(summaryBottomSheet);
     summaryBehavior.setHideable(false);
     summaryBehavior.setBottomSheetCallback(new SummaryBottomSheetCallback(navigationPresenter,
-      navigationViewEventDispatcher));
+        navigationViewEventDispatcher));
   }
 
   private void initializeNavigationEventDispatcher() {
@@ -591,7 +591,7 @@ public class NavigationView extends CoordinatorLayout implements LifecycleOwner,
 
   private void initializeInstructionListListener() {
     instructionView.setInstructionListListener(new NavigationInstructionListListener(navigationPresenter,
-      navigationViewEventDispatcher));
+        navigationViewEventDispatcher));
   }
 
   private void initializeNavigationMap(MapView mapView, MapboxMap map) {
@@ -645,7 +645,7 @@ public class NavigationView extends CoordinatorLayout implements LifecycleOwner,
     int paddingBuffer = (int) resources.getDimension(R.dimen.route_overview_buffer_padding);
     int instructionHeight = (int) (resources.getDimension(R.dimen.instruction_layout_height) + paddingBuffer);
     int summaryHeight = (int) resources.getDimension(R.dimen.summary_bottomsheet_height);
-    return new int[] {leftRightPadding, instructionHeight, leftRightPadding, summaryHeight};
+    return new int[] { leftRightPadding, instructionHeight, leftRightPadding, summaryHeight };
   }
 
   private boolean isChangingConfigurations() {
@@ -708,7 +708,7 @@ public class NavigationView extends CoordinatorLayout implements LifecycleOwner,
     String language = establishLanguage(options);
     int roundingIncrement = establishRoundingIncrement(options);
     DistanceFormatter distanceFormatter =
-      new MapboxDistanceFormatter(getContext(), language, unitType, roundingIncrement);
+        new MapboxDistanceFormatter(getContext(), language, unitType, roundingIncrement);
 
     instructionView.setDistanceFormatter(distanceFormatter);
     summaryBottomSheet.setDistanceFormatter(distanceFormatter);
